@@ -18,7 +18,7 @@
     "prepare": "npx bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
-    "pods": "cd example && pod-install --quiet",
+    "pods": "cd example && npx pod-install ios --quiet",
     "bootstrap": "yarn example && yarn && yarn pods"
   },
   "keywords": [
