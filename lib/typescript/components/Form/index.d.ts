@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import * as React from 'react';
 import { TextInputSubmitEditingEventData, NativeSyntheticEvent, ViewStyle } from 'react-native';
 interface Props {
-    children: ReactNode;
+    children: React.ReactNode;
     keyboardVerticalOffset?: number;
     buttonText?: string;
     buttonStyle?: object | object[];

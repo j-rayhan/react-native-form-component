@@ -1,4 +1,5 @@
-import React, { Children, useState, ReactNode } from 'react';
+import * as React from 'react';
+// import React, { Children, useState, ReactNode } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -14,7 +15,7 @@ import { containsError } from '../FormItem';
 import { colors } from '../../colors';
 
 interface Props {
-  children: ReactNode;
+  children: React.ReactNode;
   keyboardVerticalOffset?: number;
   buttonText?: string;
   buttonStyle?: object | object[];
@@ -29,12 +30,12 @@ export let submitForm: (
 ) => void;
 
 export default function Form(props: Props) {
-  const [width, setWidth] = useState(0);
-  const [opacity, setOpacity] = useState(1);
+  const [width, setWidth] = React.useState(0);
+  const [opacity, setOpacity] = React.useState(1);
 
   const handleButtonPress = () => {
     const fieldsWithError: string[] = [];
-    Children.forEach(props.children, (child, index) => {
+    React.Children.forEach(props.children, (child, index) => {
       //@ts-ignore
       if (child && child.ref?.current?.getComponent() == 'FormItem') {
         const { keyboardType, isRequired, value, customValidation } =
