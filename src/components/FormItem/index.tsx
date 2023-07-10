@@ -18,6 +18,7 @@ import {
   Platform,
   Pressable,
   TextInputProps,
+  TextProps,
 } from 'react-native';
 
 import Label from '../Label';
@@ -27,12 +28,12 @@ import ShowTextIcon from '../_icons/ShowTextIcon';
 type Validation = { status: boolean; message: string };
 
 interface Props extends TextInputProps {
-  textInputStyle?: object | object[];
+  textInputStyle?: TextInputProps['style'];
   children?: ReactNode;
   underneathText?: string;
   underneathTextStyle?: object | object[];
   label?: string;
-  labelStyle?: object | object[];
+  labelStyle?: TextProps['style'];
   isRequired?: boolean;
   value: string;
   customValidation?: () => Validation;
@@ -120,6 +121,12 @@ const FormItem = forwardRef(({ children, ...props }: Props, ref: any) => {
               textStyle={[
                 !props.asterik ? { marginLeft: 4 } : undefined,
                 props.labelStyle,
+                {
+                  color: animatedBottom.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [colors.blue, colors.black],
+                  }),
+                },
               ]}
               asterik={props.asterik}
               style={[

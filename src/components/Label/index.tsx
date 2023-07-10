@@ -12,7 +12,9 @@ interface LabelProps {
 export default function Label(props: LabelProps) {
   return (
     <Animated.View style={[styles.wrapper, props.style]}>
-      <Text style={[styles.label, props.textStyle]}>{props.text}</Text>
+      <Animated.Text style={[styles.label, props.textStyle]}>
+        {props.text}
+      </Animated.Text>
       {props.asterik ? (
         <Text style={[styles.asterik, props.asterikStyle]}>*</Text>
       ) : null}
