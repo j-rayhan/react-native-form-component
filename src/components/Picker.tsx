@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  ReactNode,
-  RefObject,
-  useRef,
-  useEffect,
-} from 'react';
+import * as React from 'react';
 import {
   View,
   StyleSheet,
@@ -27,7 +21,7 @@ interface Props {
   items: Array<Item>;
   onSelection: (item: Item) => void;
   selectedValue: string | number;
-  pickerIcon?: ReactNode;
+  pickerIcon?: React.ReactNode;
   iconWrapperStyle?: object | object[];
   asterik?: boolean;
   labelStyle?: object | object[];
@@ -43,13 +37,21 @@ interface Props {
 }
 
 export default function Picker(props: Props) {
-  const [selectedValue, setSelectedValue] = useState(props.selectedValue);
-  const [showPicker, setShowPicker] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0, width: 0, height: 0 });
-  const [animatedBottom, setAnimatedBottom] = useState(new Animated.Value(0));
-  const [shouldAnimate, setShouldAnimate] = useState(true);
+  const [selectedValue, setSelectedValue] = React.useState(props.selectedValue);
+  const [showPicker, setShowPicker] = React.useState(false);
+  const [position, setPosition] = React.useState({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+  });
+  const [animatedBottom, setAnimatedBottom] = React.useState(
+    new Animated.Value(0)
+  );
+  const [shouldAnimate, setShouldAnimate] = React.useState(true);
 
-  const pickerRef: RefObject<View> = useRef() as RefObject<View>;
+  const pickerRef: React.RefObject<View> =
+    React.useRef() as React.RefObject<View>;
 
   const handlePress = () => {
     if (props.floatingLabel && shouldAnimate)
@@ -68,7 +70,7 @@ export default function Picker(props: Props) {
     setShowPicker(!showPicker);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (props.floatingLabel && props.selectedValue)
       Animated.timing(animatedBottom, {
         toValue: position.height - 10,

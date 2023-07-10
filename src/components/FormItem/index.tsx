@@ -1,11 +1,4 @@
-import React, {
-  forwardRef,
-  useState,
-  useImperativeHandle,
-  useRef,
-  ReactNode,
-  useEffect,
-} from 'react';
+import * as React from 'react';
 import {
   TextInput,
   View,
@@ -29,7 +22,7 @@ type Validation = { status: boolean; message: string };
 
 interface Props extends TextInputProps {
   textInputStyle?: TextInputProps['style'];
-  children?: ReactNode;
+  children?: React.ReactNode;
   underneathText?: string;
   underneathTextStyle?: object | object[];
   label?: string;
@@ -47,16 +40,19 @@ interface Props extends TextInputProps {
   ref: React.RefObject<TextInput>;
 }
 
-const FormItem = forwardRef(({ children, ...props }: Props, ref: any) => {
-  const [hasError, setHasError] = useState({ status: false, message: '' });
-  const [animatedBottom] = useState(new Animated.Value(0));
-  const [shouldAnimate, setShouldAnimate] = useState(true);
-  const [wrapperHeight, setWrapperHeight] = useState(0);
+const FormItem = React.forwardRef(({ children, ...props }: Props, ref: any) => {
+  const [hasError, setHasError] = React.useState({
+    status: false,
+    message: '',
+  });
+  const [animatedBottom] = React.useState(new Animated.Value(0));
+  const [shouldAnimate, setShouldAnimate] = React.useState(true);
+  const [wrapperHeight, setWrapperHeight] = React.useState(0);
   const { isRequired, value, keyboardType } = props;
-  const inputRef: any = useRef();
-  const [hideText, setHideText] = useState(props.secureTextEntry);
+  const inputRef: any = React.useRef();
+  const [hideText, setHideText] = React.useState(props.secureTextEntry);
 
-  useImperativeHandle(ref, () => ({
+  React.useImperativeHandle(ref, () => ({
     setState: () => {
       let validation;
       if (props.customValidation) validation = props.customValidation();
@@ -88,7 +84,7 @@ const FormItem = forwardRef(({ children, ...props }: Props, ref: any) => {
     if (props.onFocus) props.onFocus(e);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (props.floatingLabel && props.value)
       Animated.timing(animatedBottom, {
         toValue: props.textArea ? 24 : wrapperHeight / 2,

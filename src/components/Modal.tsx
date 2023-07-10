@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import * as React from 'react';
 import {
   View,
   StyleSheet,
@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 interface Props extends ModalProps {
-  children: ReactNode;
+  children: React.ReactNode;
   show: boolean;
   backgroundColor?: string;
 }

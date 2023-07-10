@@ -1,4 +1,4 @@
-import React, { useState, createRef, RefObject } from 'react';
+import * as React from 'react';
 import {
   View,
   StyleSheet,
@@ -19,13 +19,13 @@ interface Props extends TextInputProps {
   style?: StyleProp<ViewStyle>;
 }
 
-const refs: RefObject<TextInput>[] = [];
+const refs: React.RefObject<TextInput>[] = [];
 export default function PinInput(props: Props) {
-  const [pin, setPin] = useState(Array(props.numOfInput).fill(''));
-  const [activeInput, setActiveInput] = useState(0);
+  const [pin, setPin] = React.useState(Array(props.numOfInput).fill(''));
+  const [activeInput, setActiveInput] = React.useState(0);
   if (!refs.length) {
     for (let i = 0; i < pin.length; i++) {
-      refs.push(createRef());
+      refs.push(React.createRef());
     }
   }
 

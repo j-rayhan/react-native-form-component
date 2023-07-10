@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import * as React from 'react';
 interface Item {
     label: string;
     value: string | number;
@@ -7,7 +7,7 @@ interface Props {
     items: Array<Item>;
     onSelection: (item: Item) => void;
     selectedValue: string | number;
-    pickerIcon?: ReactNode;
+    pickerIcon?: React.ReactNode;
     iconWrapperStyle?: object | object[];
     asterik?: boolean;
     labelStyle?: object | object[];

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import * as React from 'react';
 import { TextInput, KeyboardTypeOptions, TextInputProps, TextProps } from 'react-native';
 type Validation = {
     status: boolean;
@@ -6,7 +6,7 @@ type Validation = {
 };
 interface Props extends TextInputProps {
     textInputStyle?: TextInputProps['style'];
-    children?: ReactNode;
+    children?: React.ReactNode;
     underneathText?: string;
     underneathTextStyle?: object | object[];
     label?: string;
